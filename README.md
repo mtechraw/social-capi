@@ -1,4 +1,4 @@
-# SocialCAPI – Laravel Facebook CAPI Integration
+# SocialCAPI – Laravel Social CAPI Integration
 
 **SocialCAPI** is a Laravel 11+ compatible package that provides a wrapper for sending Facebook Conversions API (CAPI) events server-side using the official [`facebook/php-business-sdk`](https://github.com/facebook/facebook-php-business-sdk). It is ideal for tracking conversions and interactions directly from your backend with support for `test_event_code`, dynamic data, and Laravel configuration management.
 
