@@ -1,4 +1,4 @@
-# SocialCAPI – Laravel CAPI Integration
+# SocialCAPI – Laravel Facebook CAPI Integration
 
 **SocialCAPI** is a Laravel 11+ compatible package that provides a wrapper for sending Facebook Conversions API (CAPI) events server-side using the official [`facebook/php-business-sdk`](https://github.com/facebook/facebook-php-business-sdk). It is ideal for tracking conversions and interactions directly from your backend with support for `test_event_code`, dynamic data, and Laravel configuration management.
 
@@ -62,11 +62,10 @@ use SocialCAPI\Facebook\FacebookChannel;
 
 $data = [
     'email' => 'john@example.com',
-    'realIpCountry' => 'US',
-    'externalUserId' => '123456',
-    'userName' => 'John',
-    'mobile' => '+11234567890',
-    'skin' => 'default',
+    'ip' => '127.0.0.1',
+    'city' => 'local',
+    'state' => 'Texas',
+    'country' => 'US',
     'event_name' => 'Purchase',
     'test_event_code' => 'TEST1234ABC', // Optional: for Facebook Events Manager test tab
 ];
@@ -95,11 +94,10 @@ You only need to specify the event name in the `event_name` key.
 The input array can contain any of the following fields (optional, only what's provided will be sent):
 
 - `email`
-- `realIpCountry`
-- `externalUserId`
-- `userName`
-- `mobile`
-- `skin`
+- `country`
+- `city`
+- `state`
+- `ip`
 - `event_name`
 - `test_event_code`
 
@@ -133,23 +131,6 @@ social-capi/
         ├── FacebookChannel.php
         └── FacebookMessage.php
 ```
-
----
-
-## 📤 Releasing a New Version
-
-If you make updates:
-
-```bash
-git add .
-git commit -m "Add feature X"
-git tag v1.0.1
-git push origin main --tags
-```
-
-Then go to [Packagist](https://packagist.org/) and click "Update" if your webhook isn't automatic.
-
----
 
 ## 📘 License
 
