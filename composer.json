@@ -1,0 +1,22 @@
+{
+    "name": "mtechraw/social-capi",
+    "description": "Laravel package to send CAPI events",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SocialCAPI\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SocialCAPI\\Facebook\\FBServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "illuminate/support": "^11.0",
+        "facebook/php-business-sdk": "^22.0"
+    }
+}
