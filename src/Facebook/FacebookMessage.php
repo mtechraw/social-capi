@@ -15,23 +15,19 @@ class FacebookMessage
 
     public function getEvent(string $eventName): Event
     {
-        $customData = new CustomData([
-            'content_category' => $this->data['skin'] ?? null,
-        ]);
-
         $userData = new UserData([
-            'email'        => $this->data['email'] ?? null,
-            'country_code' => $this->data['realIpCountry'] ?? null,
-            'external_id'  => $this->data['externalUserId'] ?? null,
-            'first_name'   => $this->data['userName'] ?? null,
-            'phone'        => $this->data['mobile'] ?? null,
+            'email'             => $this->data['email'] ?? null,
+            'country_code'      => $this->data['country'] ?? null,
+            'state'             => $this->data['state'] ?? null,
+            'city'              => $this->data['city'] ?? null,
+            'client_ip_address' => $this->data['ip'] ?? null,
         ]);
 
         return (new Event())
+            ->setEventId($this->data['event_id'] ?? null)
             ->setEventName($eventName)
             ->setEventTime(time())
             ->setUserData($userData)
-            ->setCustomData($customData)
             ->setActionSource('website');
     }
 }
