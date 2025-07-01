@@ -14,7 +14,7 @@ class FacebookChannel
     {
         $this->config = $config;
     }
-    
+
     public function send(array $notifiable): bool
     {
         $message = new FacebookMessage($notifiable);
@@ -26,6 +26,10 @@ class FacebookChannel
         $request = (new EventRequest($this->config->get('fb-capi.pixel_id')))
             ->setEvents([$event]);
 
+        if (!empty($notifiable['test_event_code'])) {
+            $request->setTestEventCode($notifiable['test_event_code']);
+        } 
+           
         $request->execute();
 
         return true;
