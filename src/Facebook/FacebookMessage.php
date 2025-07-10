@@ -29,8 +29,8 @@ class FacebookMessage
 
         if($eventName === 'Purchase' ) {
             $customData
-                ->setValue($this->data['currency'] ?? 'USD')
-                ->setCurrency($this->data['amount'] ?? '1.00');
+                ->setValue($this->data['amount'] ?? '1.00')
+                ->setCurrency($this->data['currency'] ?? 'USD');
         }
 
         return (new Event())
