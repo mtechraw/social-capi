@@ -20,8 +20,18 @@ class FacebookMessage
             'country_code'      => $this->data['country'] ?? null,
             'state'             => $this->data['state'] ?? null,
             'city'              => $this->data['city'] ?? null,
-            'client_ip_address' => $this->data['ip'] ?? null,
+            'client_ip_address' => $this->data['ip'] ?? null
         ]);
+        
+        $customData = new CustomData([
+                'content_category' => $this->data['app_name'] ?? null
+        ]);
+
+        if($eventName === 'Purchase' ) {
+            $customData
+                ->setValue($this->data['currency'] ?? 'USD')
+                ->setCurrency($this->data['amount'] ?? '1.00');
+        }
 
         return (new Event())
             ->setEventId($this->data['event_id'] ?? null)
