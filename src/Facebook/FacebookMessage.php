@@ -40,6 +40,7 @@ class FacebookMessage
             ->setEventName($eventName)
             ->setEventTime(time())
             ->setUserData($userData)
+            ->setCustomData($customData)
             ->setActionSource('website');
     }
 }
