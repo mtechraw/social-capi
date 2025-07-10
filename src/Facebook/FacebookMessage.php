@@ -18,7 +18,7 @@ class FacebookMessage
         $userData = new UserData([
             'email' => $this->data['email'] ?? null,
         ]);
-        
+
         $userData
             ->setCity($this->data['city'] ?? null)
             ->setState($this->data['state'] ?? null)
@@ -40,6 +40,6 @@ class FacebookMessage
             ->setEventName($eventName)
             ->setEventTime(time())
             ->setUserData($userData)
-            ->setActionSource('server');
+            ->setActionSource('website');
     }
 }
