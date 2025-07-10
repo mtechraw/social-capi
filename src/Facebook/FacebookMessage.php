@@ -15,12 +15,15 @@ class FacebookMessage
 
     public function getEvent(string $eventName): Event
     {
-        $userData = new UserData()
+        $userData = new UserData([
+            'email' => $this->data['email'] ?? null,
+        ]);
+        
+        $userData
             ->setCity($this->data['city'] ?? null)
             ->setState($this->data['state'] ?? null)
             ->setClientIpAddress($this->data['ip'] ?? null)
-            ->setCountryCode($this->data['country'] ?? null)
-            ->setEmail($this->data['email'] ?? null);
+            ->setCountryCode($this->data['country'] ?? null);
         
         $customData = new CustomData([
                 'content_category' => $this->data['app_name'] ?? null
