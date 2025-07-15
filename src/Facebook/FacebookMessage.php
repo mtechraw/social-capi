@@ -20,16 +20,23 @@ class FacebookMessage
         ]);
 
         $userData
+            ->setFirstName($this->data['first_name'] ?? null)
+            ->setLastName($this->data['last_name'] ?? null)
             ->setCity($this->data['city'] ?? null)
             ->setState($this->data['state'] ?? null)
             ->setClientIpAddress($this->data['ip'] ?? null)
-            ->setCountryCode($this->data['country'] ?? null);
-        
+            ->setCountryCode($this->data['country'] ?? null)
+            ->setZipCode($this->data['zip_code'] ?? null)
+            ->setPhone($this->data['phone'] ?? null)
+            ->setClientUserAgent($this->data['user_agent'] ?? null)
+            ->setFbc($this->data['fbc_id'] ?? null)
+            ->setFbp($this->data['fbp_id'] ?? null);
+
         $customData = new CustomData([
-                'content_category' => $this->data['app_name'] ?? null
+            'content_category' => $this->data['app_name'] ?? null
         ]);
 
-        if($eventName === 'Purchase' ) {
+        if ($eventName === 'Purchase') {
             $customData
                 ->setValue(floatval($this->data['amount'] ?? '1.00'))
                 ->setCurrency($this->data['currency'] ?? 'USD');
